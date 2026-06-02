@@ -470,6 +470,32 @@ footer{text-align:center;padding:2.5rem 1rem;font-size:0.85rem;color:var(--text3
    Header sticky + logo + footer brand + print styles
 ═══════════════════════════════════════════════════ */
 
+/* ── Campos de empleo — responsivo ── */
+.empleo-campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+/* Tablet: fechas en una fila, SDI abajo full-width */
+@media (max-width: 640px) {
+  .empleo-campos {
+    grid-template-columns: 1fr 1fr;
+  }
+  .empleo-campos > div:last-child {
+    grid-column: 1 / -1; /* SDI ocupa todo el ancho */
+  }
+}
+/* Móvil pequeño: todo en columna */
+@media (max-width: 400px) {
+  .empleo-campos {
+    grid-template-columns: 1fr;
+  }
+  .empleo-campos > div:last-child {
+    grid-column: auto;
+  }
+}
+
 /* ── Variables de marca ── */
 :root {
   --brand-dark:    #1A2E2E;   /* verde oscuro escudo      */
@@ -1791,7 +1817,7 @@ function renderCards(){
       </div>
 
       <!-- Campos principales -->
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem">
+      <div class="empleo-campos">
         <div>
           <div style="font-size:0.82rem;font-weight:700;color:var(--text2);margin-bottom:0.45rem">📅 Fecha de <strong>entrada</strong></div>
           <input type="date" class="td-input" value="${p.ini||''}"
